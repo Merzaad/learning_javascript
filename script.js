@@ -51,3 +51,18 @@ const promiseAll = async () => {
     console.log(p)
   }) */
 }
+
+const array = () => {
+  const x = ['1', 2, 3, 3, 4, 5, 6, 7, 6, 5, 4, 3, 3, 1]
+  x.sort((a, b) => b - a)
+  const removeDuplicate = [...new Set(x)]
+  console.log(removeDuplicate)
+}
+const nan = () => {
+  const x = [{}, [], null, undefined, 'NaN', NaN]
+  const y = x.map((i) => isNaN(i))
+  const q = x.map((i) => Number.isNaN(i))
+  const z = x.map((i) => Number(i))
+
+  console.table([ x, z, y, q])
+}
