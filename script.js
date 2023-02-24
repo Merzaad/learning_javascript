@@ -32,17 +32,17 @@ const promiseAll = async () => {
     new Promise((resolve, reject) => {
       setTimeout(() => reject(3), 500)
     })
-  console.time()
+  console.time('resolve')
   const [result1, result2] = await Promise.all([promise1(), promise2()])
-  console.timeEnd()
-  console.time()
+  console.log(`result: ${result1} ${result2}`)
+  console.timeEnd('resolve')
+  console.time('reject')
   try {
     const [result1, result2] = await Promise.all([promise1(), promise3()])
-    console.log(result1, result2)
   } catch (error) {
-    console.error(error)
+    console.error(`error: ${error}`)
   }
-  console.timeEnd()
+  console.timeEnd('reject')
   /* const resolvedPromisesArray = [Promise.resolve(33), Promise.resolve(44)]
   const p = Promise.all(resolvedPromisesArray)
   console.log(p)
@@ -64,5 +64,14 @@ const nan = () => {
   const q = x.map((i) => Number.isNaN(i))
   const z = x.map((i) => Number(i))
 
-  console.table([ x, z, y, q])
+  console.table([x, z, y, q])
 }
+const string = () => {
+  const x = 'string'
+  const c = x + [1, 2]
+  const { length } = x
+  const convert = (l) => l.map((i) => String(i))
+  const test = [{}, [], null, undefined, { a: 1 }, [1, 2]]
+  console.log([convert(test), test])
+}
+string()
