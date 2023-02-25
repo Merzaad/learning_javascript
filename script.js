@@ -74,4 +74,17 @@ const string = () => {
   const test = [{}, [], null, undefined, { a: 1 }, [1, 2]]
   console.log([convert(test), test])
 }
-string()
+
+const spread = () => {
+  const x = { a: 1, b: 2, c: 3, d: 4 }
+  const y = [1, 2, 3, 4, 5, 6]
+  const z = [...y, 7]
+  const { a, ...b } = x
+  const [n, m, ...k] = y
+  const rest = (...x) => {
+    console.log(x)
+  }
+  rest(1, 2, 3, 4)
+}
+
+spread()
