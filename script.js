@@ -87,4 +87,24 @@ const spread = () => {
   rest(1, 2, 3, 4)
 }
 
-spread()
+const uselessClass = () => {
+  // strict
+  const Useless = class {
+    constructor(firstname, lastname) {
+      this.firstname = firstname
+      this.lastname = lastname
+    }
+    get name() {
+      return this.firstname + this.lastname
+    }
+    getName() {
+      return this.firstname
+    }
+  }
+  const test = new Useless('m', 'p')
+  console.log(typeof Useless)
+  console.log(test.name)
+  console.log(test.getName())
+}
+
+uselessClass()
