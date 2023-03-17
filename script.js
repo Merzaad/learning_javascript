@@ -90,10 +90,13 @@ const spread = () => {
 const uselessClass = () => {
   // strict
   const Useless = class {
+    minAge = 21
+    #minHeigth
     constructor(firstname, lastname) {
       this.firstname = firstname
       this.lastname = lastname
     }
+    static staticField = '??'
     get name() {
       return this.firstname + this.lastname
     }
@@ -101,10 +104,20 @@ const uselessClass = () => {
       return this.firstname
     }
   }
+
+  class Uselesser extends Useless {
+    constructor(firstname, lastname) {
+      super(firstname, lastname)
+    }
+  }
   const test = new Useless('m', 'p')
+  const test2 = new Uselesser('n', 'f')
+
   console.log(typeof Useless)
   console.log(test.name)
   console.log(test.getName())
+  console.log(Useless.staticField)
+  console.log(test2.name)
 }
 
 uselessClass()
