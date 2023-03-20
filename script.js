@@ -120,4 +120,34 @@ const uselessClass = () => {
   console.log(test2.name)
 }
 
-uselessClass()
+const eventLoop = () => {
+  const promise1 = () =>
+    new Promise((resolve) => {
+      resolve('1')
+    })
+  const promise2 = () =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('2')
+      })
+    })
+  const promise3 = () =>
+    new Promise((resolve) => {
+      resolve('3')
+    })
+  console.log('start')
+  setTimeout(() => {
+    console.log('timeout1')
+  })
+  promise1().then((r) => console.log(r))
+
+  setTimeout(() => {
+    console.log('timeout2')
+  })
+
+  promise2().then((r) => console.log(r))
+  promise3().then((r) => console.log(r))
+
+  console.log('finish')
+}
+eventLoop()
