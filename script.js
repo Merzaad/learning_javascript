@@ -18,20 +18,19 @@ const regex = () => {
   console.log(testStr.replace(regExGlobal, '___'))
   console.log(regEx.test(testStr))
 }
-
+const promise1 = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve(1), 1000)
+  })
+const promise2 = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve(2), 1500)
+  })
+const promise3 = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => reject(3), 500)
+  })
 const promiseAll = async () => {
-  const promise1 = () =>
-    new Promise((resolve, reject) => {
-      setTimeout(() => resolve(1), 1000)
-    })
-  const promise2 = () =>
-    new Promise((resolve, reject) => {
-      setTimeout(() => resolve(2), 1500)
-    })
-  const promise3 = () =>
-    new Promise((resolve, reject) => {
-      setTimeout(() => reject(3), 500)
-    })
   console.time('resolve')
   const [result1, result2] = await Promise.all([promise1(), promise2()])
   console.log(`result: ${result1} ${result2}`)
@@ -51,6 +50,14 @@ const promiseAll = async () => {
     console.log(p)
   }) */
 }
+const promiseAllSettled = async () => {
+  const respones = await Promise.allSettled([promise1(), promise3()])
+  const data = respones.map((response) =>
+    response.status === 'fulfilled' ? response.value : 'error'
+  )
+  console.log(data)
+}
+promiseAllSettled()
 
 const array = () => {
   const x = ['1', 2, 3, 3, 4, 5, 6, 7, 6, 5, 4, 3, 3, 1]
@@ -150,4 +157,3 @@ const eventLoop = () => {
 
   console.log('finish')
 }
-eventLoop()
