@@ -57,7 +57,6 @@ const promiseAllSettled = async () => {
   )
   console.log(data)
 }
-promiseAllSettled()
 
 const array = () => {
   const x = ['1', 2, 3, 3, 4, 5, 6, 7, 6, 5, 4, 3, 3, 1]
@@ -154,6 +153,20 @@ const eventLoop = () => {
 
   promise2().then((r) => console.log(r))
   promise3().then((r) => console.log(r))
-
   console.log('finish')
 }
+
+const deepAndShallowCopy = () => {
+  const x = [1, '1', false, Symbol('m'), null, undefined, [[1, 2]], {}, () => null]
+  const y = [...x]
+  const z = JSON.parse(JSON.stringify(x))
+  y[6][0] = 'y'
+  console.log('y', x[6])
+  z[6][0] = 'z'
+  console.log('z', x[6])
+  y[6] = 'yy'
+  z[6] = 'xx'
+  console.log('final', x[6], y[6], z[6])
+}
+
+deepAndShallowCopy()
