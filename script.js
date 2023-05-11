@@ -169,4 +169,24 @@ const deepAndShallowCopy = () => {
   console.log('final', x[6], y[6], z[6])
 }
 
-deepAndShallowCopy()
+const incrementAndDecrement = () => {
+  let x = 1
+  let y = 2
+  console.log(x++, ++y, x, y, y--, --x, x, y)
+}
+
+const unray = () => {
+  const x = '1'
+  const y = '+0123'
+  const z = '1a'
+  console.log(+x, -y, +z)
+}
+
+const Void = () => {
+  const x = void (function x() {
+    console.log('evaluated')
+  })()
+  console.log(x)
+}
+
+Void()
