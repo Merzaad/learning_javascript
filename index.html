@@ -3,21 +3,14 @@
   <head>
     <title>javascript battleground</title>
   </head>
-  <body
-    style="
-      background-color: rgb(46, 46, 46);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      
-    "
-  >
-    <button style="width: 70%; height: 200px; font-size: 50px;" onclick="increase()" id="x"></button>
-    <button style="width: 70%; height: 200px; font-size: 50px;" onclick="reset()" id="y">reset</button>
+  <body style="background-color: rgb(46, 46, 46); display: grid; grid-template-rows: auto 1fr">
+    <div>
+      <button onclick="increase()" id="x"></button>
+      <button onclick="reset()" id="y">reset</button>
+    </div>
+    <canvas style="max-height: 500px" id="board"></canvas>
   </body>
   <script src="./script.js"></script>
   <script src="./module.js"></script>
+  <script src="./canvas.js"></script>
 </html>
