@@ -183,10 +183,70 @@ const unray = () => {
 }
 
 const Void = () => {
+  let s = 0
   const x = void (function x() {
     console.log('evaluated')
   })()
-  console.log(x)
+  const y = void ++s || void s++
+  console.log(y)
+  console.log(s)
 }
 
-Void()
+const This = () => {
+  const x = {
+    a: 1,
+    b: () => console.log(this.a),
+    c: function () {
+      console.log(this.a)
+    },
+  }
+  x.c()
+  console.log(this.document)
+  console.log(this)
+}
+
+const PromiseReslove = async () => {
+  const async1 = async (x) => {
+    console.log('argument:', x)
+    try {
+      const result = await Promise.resolve(x)
+      return result
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+  async1(Promise.reject('reject'))
+    .then((r) => console.log(r))
+    .catch((e) => console.error(e))
+  async1(
+    new Promise((resolve) => {
+      setTimeout(() => resolve('timeout 1sec'), 1000)
+    })
+  )
+    .then((r) => console.log(r))
+    .catch((e) => console.error(e))
+  async1('string')
+    .then((r) => console.log(r))
+    .catch((e) => console.error(e))
+  console.log(
+    'newPromise',
+    await Promise.resolve(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject('error')
+        }, 1000)
+      })
+    ).catch((e) => e)
+  )
+}
+
+const testAwait = async () => {
+  const t = () =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('error')
+      }, 1000)
+    })
+  const result = await t().catch((e) => e)
+  console.log(result)
+}
