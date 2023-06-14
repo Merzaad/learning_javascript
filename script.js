@@ -192,19 +192,6 @@ const Void = () => {
   console.log(s)
 }
 
-const This = () => {
-  const x = {
-    a: 1,
-    b: () => console.log(this.a),
-    c: function () {
-      console.log(this.a)
-    },
-  }
-  x.c()
-  console.log(this.document)
-  console.log(this)
-}
-
 const PromiseReslove = async () => {
   const async1 = async (x) => {
     console.log('argument:', x)
@@ -249,4 +236,50 @@ const testAwait = async () => {
     })
   const result = await t().catch((e) => e)
   console.log(result)
+}
+
+/* console.log(ssss)
+{
+  console.log(ssss)
+  console.log(ssss, testss, testtt)
+  var testss = 1
+  function ssss(...x) {
+    console.log(hoisted)
+    console.log(arguments)
+    console.log(x)
+    var hoisted = true
+    function ss() {
+      return null
+    }
+  }
+  var testtt = () => console.log('arrow')
+}
+var ssss = 1
+console.log(ssss)
+todooooooooooooooooooooooooooo
+*/
+
+const This = () => {
+  this.d = 'd'
+  const x = {
+    a: 1,
+    b: () => {
+      this.a = 'b'
+      console.log(this)
+      return this
+    },
+    c: function () {
+      this.a = 2
+      console.log(this)
+    },
+    d: function () {
+      console.log(this)
+    },
+  }
+  x.d()
+  x.b()
+  x.c()
+  console.log(this)
+  console.log(Object.is(this, x.b()))
+  // todo: Lexical vs Dynamic Scope
 }
