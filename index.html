@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html style="width: 100%">
   <head>
     <title>javascript battleground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body style="background-color: rgb(46, 46, 46); display: grid; grid-template-rows: auto 1fr">
     <div>
       <button onclick="increase()" id="x"></button>
       <button onclick="reset()" id="y">reset</button>
     </div>
-    <button onclick="This()" id="y">thiss</button>
-    <canvas style="max-height: 500px" id="board"></canvas>
+    <div>
+      <button onclick="This()" id="y">thiss</button>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <canvas style="max-height: 500px" id="board"></canvas>
+    </div>
   </body>
   <script src="./script.js"></script>
   <script src="./module.js"></script>
   <script src="./canvas.js"></script>
+  <script src="./api.js"></script>
 </html>

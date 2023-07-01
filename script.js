@@ -283,3 +283,48 @@ const This = () => {
   console.log(Object.is(this, x.b()))
   // todo: Lexical vs Dynamic Scope
 }
+
+const higherOrder = () => {
+  const multipleBy = (x) => (y) => x * y
+  const multipleBy2 = multipleBy(2)
+  console.log(multipleBy2(3))
+}
+
+const toFixed = () => {
+  const x = 12
+  const y = 12.129456789
+  const z = 1.456e-88
+  const q = 1.2e10
+  console.log(x.toFixed(2))
+  console.log(y.toFixed(2))
+  console.log((1 / 0).toFixed(1))
+  console.log(z.toFixed(91))
+  console.log(q.toFixed())
+  console.log((-12.45).toFixed(2))
+  console.log(-(12.45).toFixed(2))
+}
+
+const ParseFloat = () => {
+  console.log(parseFloat('1.4587'))
+  console.log(parseFloat('5e-4'))
+  console.log(parseFloat('1.99999999999999999999999999999'))
+  console.log(parseFloat('asd1.54'))
+  console.log(parseFloat('1.54asd'))
+  console.log(parseFloat('    1.54asd'))
+  console.log(parseFloat(' -1.54asd'))
+  console.log(parseFloat(' - 1.54asd'))
+  console.log(parseFloat(' -Infinity'))
+}
+
+const ParseInt = () => {
+  console.log(parseInt('12.4587'))
+  console.log(parseInt('5.45e-1'))
+  console.log(parseInt('5.45e+10'))
+  console.log(parseInt('1.99999999999999999999999999999'))
+  console.log(parseInt('asd1.54'))
+  console.log(parseInt('1.54asd'))
+  console.log(parseInt('    1.54asd'))
+  console.log(parseInt(' -1.54asd'))
+  console.log(parseInt(' - 1.54asd'))
+  console.log(parseInt(' -Infinity'))
+}
